@@ -27,10 +27,10 @@ Support By [ Cloud Rx (<a href='https://rxapis.com'>https://rxapis.com</a>) ].
 
 
 ### Folder Steps
-** step1 : Create Stars
-** step2 : Create Interface
-** step2-1 : Date To Degree
-** step3 : Multiple Stars
+* step1 : Create Stars
+* step2 : Create Interface
+* step2-1 : Date To Degree
+* step3 : Multiple Stars
 
 
 ### Default Function
