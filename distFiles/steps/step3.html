@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <style>
+            * { box-sizing: border-box; }
+            body {
+                /* background-color: rgb(41, 59, 90); */
+            }
+            .explain {
+                position: absolute;
+                top : 0;
+                left : 0;
+                background: rgba(0,0,0, 0.2);
+                color : white;
+                padding: 20px;
+                z-index: 10;
+            }
+            #testDom {
+                position: absolute;
+                top : 50%;
+                left : 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+            }
+
+
+            .rx-solar-html {
+                position: absolute;
+                top : 10px;
+                right : 10px;
+                z-index: 99;
+
+                display: flex;
+                width: 230px;
+                height: 50px;
+            }
+            .rx-solar-html > button {
+                flex : 1;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 30px;
+                margin-left: 5px;
+            }
+
+            .rx-solar-html-scroll {
+                position: absolute;
+                top : 90px;
+                right : 10px;
+                z-index: 99;
+
+                width: 220px;
+                max-height: 70%;
+                overflow: hidden;
+                overflow-y: auto;
+            }
+            .rx-solar-html-scroll div {
+                width: 100%;
+                padding : 10px;
+            }
+            .rx-solar-html-scroll span {
+                display: inline-block;
+                width: 100%;
+                /* color : white; */
+                background-color: rgba(0,0,0, 0.2);
+                padding : 10px;
+            }
+            .rx-solar-html-scroll progress {
+                position: relative;
+                width: inherit;
+                height: 30px;
+            }
+            progress:before {
+                content: attr(data-label);
+                font-size: 10px;
+                vertical-align: 0;
+                position:absolute;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, 0px);
+                /* color : white; */
+            }
+         
+        </style>
+        <script src="../RxFramework.js"></script>
+        
+
+        <script>
+
+
+
+            const sun = {
+                label : 'Sun',                                                  // Label Should be primary key
+                centroid : [window.innerWidth / 2, window.innerHeight / 2],
+                radius : 100,
+                distance : 300,
+                degree : 180,
+                color : 'rgba(0, 255, 255, 1)',
+                image : '../images/sun.webp',                                   // Optional
+            };
+            const moon = {
+                label : 'Moon',                                                 // Label Should be primary key
+                centroid : [window.innerWidth / 2, window.innerHeight / 2],
+                radius : 50,
+                distance : 100,
+                degree : 0,
+                color : 'rgba(138, 213, 255, 1)',
+                image : '../images/moon.webp',                                  // Optional
+            }
+
+
+
+            // Button Interface
+            const globals = {
+                time : new Date(),
+                className : 'rx-solar-html',
+                buttons : [
+                    {
+                        name : 'cursor',
+                        image : '../images/i_cursor.webp',
+                        func : ()=>{
+                            // Define Here
+                            turnOnOff = !turnOnOff;
+                            rxSolar2D.SetVisualize(turnOnOff);
+                        }
+                    },
+                    {
+                        name : 'time',                                        // [ time ] Is Key By Auto Progress
+                        image : '../images/i_clock.webp',                     // Optional
+                        func : ()=>{
+                            console.log('clock');
+                        }
+                    },
+                ]
+            };
+
+
+            let turnOnOff = true;
+            let rxSolar2D;
+            const init = () => {
+
+                // Create Canvas
+                const canvas = SolarSystem2D.CreateCanvas(document.body, 1, true);
+
+                // Create Rx Solar System 2D
+                rxSolar2D = new SolarSystem2D.RxSolarSystem2D();
+
+                // Add Stars Or Set Stars
+                rxSolar2D.AddStar(sun);
+                rxSolar2D.AddStar(moon);
+
+                // rxSolar2D.SetStars([sun, moon]);
+
+                for(let i = 0; i < 100; i++){
+                    const ranPositionX = Math.random() * window.innerWidth;
+                    const ranPositionY = Math.random() * window.innerHeight;
+
+                    rxSolar2D.AddStar({
+                        label : 'Star ' + i,
+                        centroid : [ranPositionX, ranPositionY],
+                        radius : Math.random() * 10,
+                        distance : Math.random() * 100,
+                        degree : Math.random() * 360,
+                        color : 'rgba(138, 213, 255, 1)',
+                    });
+                }
+
+
+
+                // Visualize Centroid, Vector, Label
+                rxSolar2D.SetVisualize(turnOnOff);
+
+                const allStars = rxSolar2D.GetAllStars();
+
+
+                // Add Interface
+                const solarHTML = new SolarSystem2D.RxSolarHTML(document.body, globals);
+                rxSolar2D.SetRxSolarHTML(solarHTML);
+
+
+                const anime = function(){
+                    canvas.forEach(each => { each.ctx.clearRect(0, 0, each.canvas.width, each.canvas.height); });
+                    rxSolar2D.update();
+                    rxSolar2D.draw(canvas[0].ctx);
+
+                    allStars.forEach(each => each.SetDegree(each.GetDegree() + .1));
+
+                    requestAnimationFrame(anime);
+                }
+                anime();
+
+
+
+            }
+
+            window.onload = function(){
+                // RxFramework Time For Settings
+                setTimeout(init, 1000);
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="explain">
+            <h1>Rx Solar System 2D</h1>
+            <p> * Testing is available until the end of the year.</p>
+         </div>
+
+
+
+    </body>
+</html>
