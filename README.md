@@ -5,6 +5,10 @@ RxSolarSystem2D
 * Time To Degree
 * 24 Hours Devided By 360 Degree
 
+<img width="1659" alt="스크린샷 2024-09-11 오후 8 14 26" src="https://github.com/user-attachments/assets/b5e71201-0739-4423-87e5-5667e5447850">
+<img width="1659" alt="스크린샷 2024-09-11 오후 8 13 56" src="https://github.com/user-attachments/assets/36b64e57-c159-40b8-b9c0-a50242c5e2f3">
+
+
 Support By [ Cloud Rx (<a href='https://rxapis.com'>https://rxapis.com</a>) ].
 * Testing is available until the end of the year.
 
@@ -237,8 +241,6 @@ rxSolar2D.SetRxSolarHTML(solarHTML);
 
 ```
 
-<img width="1659" alt="스크린샷 2024-09-11 오후 8 14 26" src="https://github.com/user-attachments/assets/b5e71201-0739-4423-87e5-5667e5447850">
-<img width="1659" alt="스크린샷 2024-09-11 오후 8 13 56" src="https://github.com/user-attachments/assets/36b64e57-c159-40b8-b9c0-a50242c5e2f3">
 
 
 
