@@ -15,7 +15,7 @@ Support By [ Cloud Rx (<a href='https://rxapis.com'>https://rxapis.com</a>) ].
 ## Table of Contents
 
 - [Rx Solar System 2D](#rx-solar-system-2d)
-    - [Steps]
+    - [Folder Steps](#folder-steps)
     - [Default Function](#default-function)
     - [RxStar](#rx-star)
     - [RxSolarSystem2D](#rx-solar-system-2d)
@@ -26,8 +26,7 @@ Support By [ Cloud Rx (<a href='https://rxapis.com'>https://rxapis.com</a>) ].
 * Rx Solar System 2D For Canvas
 
 
-### Steps
-* Folder - steps
+### Folder Steps
 ** step1 : Create Stars
 ** step2 : Create Interface
 ** step2-1 : Date To Degree
