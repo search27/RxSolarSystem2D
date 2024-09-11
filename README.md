@@ -55,7 +55,7 @@ const degree = SolarSystem2D.DateToDegree(new Date());
 * func DegreeToDate : (Date) return degree
 ```javascript
 const degree = SolarSystem2D.DateToDegree(new Date());
-const dt = SolarSystem2D.DegreeToDate(new Date());
+const dt = SolarSystem2D.DegreeToDate(degree);
 ```
 
 * func DateToTimeString : (Date) return String Time (ex : "13:12:59")
