@@ -39,7 +39,7 @@ Support By [ Cloud Rx (<a href='https://rxapis.com'>https://rxapis.com</a>) ].
 * func CreateCanvas : (target, canvasCount, resize) return (Array) canvas
 
 ```javascript
-const canvas = RxLongShadow2D.CreateCanvas(document.body, 2, true);
+const canvas = SolarSystem2D.CreateCanvas(document.body, 2, true);
 ```
 
 * func DateToTime : (Date) return { hh, min, sec }
